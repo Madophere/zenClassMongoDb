@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+
+<body>
+
+
+    <div class="total">
+        <h1 style="color:Tomato;">Creating a Database for Zenclass</h1>
+
+        <h3 style="color:DodgerBlue;">***Queries for collection of StudentDetails***</h3>
+
+        <div style="color:MediumSeaGreen;">
+            Creating Table Student Details:<br>
+            use zenClass;<br>
+            db.createCollection("stuDet");<br>
+            db.stuDet.insertMany([{<br>
+            <br> "studentName":"Madhan",<br>
+            "reqNo" : 321,<br>
+            "taskCompleted": 7,<br>
+            "queries": "React-Task Query",<br>
+            "attendance":45.55<br>
+            },{<br>
+            "studentName":"Mohan Babu",<br>
+            "reqNo" : 322,<br>
+            "taskCompleted": 7,<br>
+            "queries": "Placement QUERY",<br>
+            "attendance":85.55<br>
+            },{<br>
+            "studentName":"Shanjay",<br>
+            "reqNo" : 323,<br>
+            "taskCompleted": 7,<br>
+            "queries": "Hackathaon query",<br>
+            "attendance":75.55<br>
+            }
+            ,{<br>
+
+            "studentName":"Raghav",<br>
+            "reqNo" : 324,<br>
+            "taskCompleted": 7,<br>
+            "queries": "Zen portal query",<br>
+            "attendance":65.55<br>
+            },
+            {<br>
+
+            "studentName":"Tamil",<br>
+            "reqNo" : 325,<br>
+            "taskCompleted": 7,<br>
+            "queries": "Node JS query",<br>
+            "attendance":65.55<br>
+            }
+            ]); <br>
+        </div>
+
+        <a href="https://imgur.com/cpgTCTv"><img src="https://i.imgur.com/cpgTCTv.png" class="img" /></a>
+
+        <div style="color:MediumSeaGreen;">
+            use zenClass;<br>
+            db.stuDet.find();<br>
+            <a href="https://imgur.com/JVxuaQM"><img src="https://i.imgur.com/JVxuaQM.png" class="img" /></a>
+
+
+            <h3 style="color:DodgerBlue;">***Queries for collection of MentorDetails***</h3>
+            <div style="color:MediumSeaGreen;">
+                use zenClass;<br>
+                db.createCollection("mentDet");<br>
+                db.mentDet.insertMany([{<br>
+                "MentorName":"Raghav",<br>
+                "ReqId" : 321,<br>
+                "queries": "React-Task Query",<br>
+                "status":"Closed"<br>
+                },{<br>
+                "MentorName":"SaiMohan",<br>
+                "ReqId" : 322,<br>
+                "queries": "Placement QUERY",<br>
+                "status":"Closed"<br>
+                },
+                {<br>
+                "MentorName":"Tamil",<br>
+                "ReqId" : 323,<br>
+                "queries": "Hackathaon query",<br>
+                "status":"Closed"<br>
+                }
+                ,{<br>
+
+                "MentorName":"Akbhar",<br>
+                "ReqId" : 324,<br>
+                "queries": "Zen portal query",<br>
+                "status":"Closed"<br>
+                },
+                {<br>
+
+                "MentorName":"suman",<br>
+                "ReqId" : 325,<br>
+                "queries": "Node JS query",<br>
+                "status":"Closed"<br>
+                }
+                ]); <br>
+            </div>
+            <a href="https://imgur.com/Xgxbx5j"><img src="https://i.imgur.com/Xgxbx5j.png" class="img" /></a>
+
+            <div style="color:MediumSeaGreen;">
+                use zenClass;<br>
+                db.mentDet.find();<br>
+            </div>
+
+            <a href="https://imgur.com/HqXuZbN"><img src="https://i.imgur.com/HqXuZbN.png" class="img" /></a>
+
+            <h3 style="color:DodgerBlue;">***Queries for collection of Details required by Mentor vs Student***</h3>
+            <div style="color:MediumSeaGreen;">
+                use zenClass;
+                db.mentDet.aggregate([
+                {
+                $lookup:
+                {
+                from: "stuDet",
+                localField: "ReqId",
+                foreignField: "reqNo",
+                as: "assigned"
+                }
+                }
+                ])
+            </div>
+
+            <a href="https://imgur.com/LAZpJ5b"><img src="https://i.imgur.com/LAZpJ5b.png" class="img" /></a>
+        </div>
+</body>
+
+</html>
